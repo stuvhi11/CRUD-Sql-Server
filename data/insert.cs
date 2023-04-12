@@ -21,40 +21,48 @@ namespace data
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                String query = "INSERT INTO dataguru (nip, nama_guru, ttl, jenis_kelamin, mapel, gaji, is_deleted, created_at) VALUES (@nip, @nama_guru, @ttl, @jenis_kelamin, @mapel, @gaji, @is_deleted, @created_at)";
-
-                SqlCommand command = new SqlCommand(query, sqlCon);
-
-                command.Parameters.AddWithValue("@nip", niptext.Text);
-                command.Parameters.AddWithValue("@nama_guru", namatext.Text);
-                command.Parameters.AddWithValue("@ttl", ttltext.Text);
-                if (radioButton1.Checked == true)
-                {
-                    command.Parameters.AddWithValue("@jenis_kelamin", "L");
-
-                }
-                if (radioButton2.Checked == true)
-                {
-                    command.Parameters.AddWithValue("@jenis_kelamin", "P");
-                }
-
-                command.Parameters.AddWithValue("@mapel", mapeltext.Text);
-                command.Parameters.AddWithValue("@gaji", gajitext.Text);
-                command.Parameters.AddWithValue("@is_deleted", false);
-                command.Parameters.AddWithValue("@created_at", DateTime.Now);
-                //command.Parameters.AddWithValue("@updated_at", DateTime.Now);
                 
+                    
+                        String query = "INSERT INTO dataguru (nip, nama_guru, ttl, jenis_kelamin, mapel, gaji, is_deleted, created_at) VALUES (@nip, @nama_guru, @ttl, @jenis_kelamin, @mapel, @gaji, @is_deleted, @created_at) ";
+
+                        SqlCommand command = new SqlCommand(query, sqlCon);
+
+
+
+                        command.Parameters.AddWithValue("@nip", niptext.Text);
+                        command.Parameters.AddWithValue("@nama_guru", namatext.Text);
+                        command.Parameters.AddWithValue("@ttl", ttltext.Text);
+                        if (radioButton1.Checked == true)
+                        {
+                            command.Parameters.AddWithValue("@jenis_kelamin", "L");
+
+                        }
+                        if (radioButton2.Checked == true)
+                        {
+                            command.Parameters.AddWithValue("@jenis_kelamin", "P");
+                        }
+
+                        command.Parameters.AddWithValue("@mapel", mapeltext.Text);
+                        command.Parameters.AddWithValue("@gaji", gajitext.Text);
+                        command.Parameters.AddWithValue("@is_deleted", false);
+                        command.Parameters.AddWithValue("@created_at", DateTime.Now);
+                        //command.Parameters.AddWithValue("@updated_at", DateTime.Now);
 
 
 
 
-                command.ExecuteNonQuery();
-                sqlCon.Close();
-                MessageBox.Show("succes");
+
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("succes");
+                    
+
+                
             }
+                
         }
 
         private void button1_Click(object sender, EventArgs e)

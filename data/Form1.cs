@@ -87,22 +87,22 @@ namespace data
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string query = "UPDATE dataguru SET is_Deleted = @isDeleted, is_deleted_at = @deletedAt WHERE id = @id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if(e.ColumnIndex == 6)
+            if (e.ColumnIndex == 6)
                 {
-                    string query = "UPDATE dataguru SET is_deleted = 1  WHERE nip = @nip";
-
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@nip", dataGridView1.Rows[e.RowIndex].Cells["nip"].Value.ToString());
-                    
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                Fresh();
-
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@isDeleted", 1);
+                    command.Parameters.AddWithValue("@deletedAt", DateTime.Now);
+                    command.Parameters.AddWithValue("@id", dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                    connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    connection.Close();
+                    Fresh();
                 }
+            }
                 if (e.ColumnIndex == 7)
                 {
                     new update().Show();

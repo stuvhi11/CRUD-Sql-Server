@@ -43,9 +43,9 @@ namespace data
                 command.Parameters.AddWithValue("@updated_at", DateTime.Now);
 
                 //niptext.Text = dataGridView1.Rows[e.RowIndex].Cells["nama_kolom"].Value.ToString();
-                niptext.Text = command.Parameters["@nip"].Value.ToString();
+                /*niptext.Text = command.Parameters["@nip"].Value.ToString();
                 command.Parameters["@nama_guru"].Value = namatext.Text;
-                command.Parameters["@id"].Value = id;
+                command.Parameters["@id"].Value = id;*/
 
                 
                 command.ExecuteNonQuery();  
