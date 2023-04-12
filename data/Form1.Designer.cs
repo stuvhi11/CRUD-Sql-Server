@@ -36,13 +36,15 @@ namespace data
             this.Refresh = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
             this.nip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_guru = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jenis_kelamin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mapel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gaji = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.jumlah = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@ namespace data
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(334, 23);
+            this.label1.Location = new System.Drawing.Point(392, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 22);
             this.label1.TabIndex = 1;
@@ -126,17 +128,6 @@ namespace data
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(730, 401);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(80, 30);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Restore";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // nip
             // 
             this.nip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -191,11 +182,44 @@ namespace data
             this.gaji.ReadOnly = true;
             this.gaji.Width = 64;
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(730, 401);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(80, 30);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Restore";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 18);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Jumlah Data :";
+            // 
+            // jumlah
+            // 
+            this.jumlah.AutoSize = true;
+            this.jumlah.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jumlah.Location = new System.Drawing.Point(126, 26);
+            this.jumlah.Name = "jumlah";
+            this.jumlah.Size = new System.Drawing.Size(18, 18);
+            this.jumlah.TabIndex = 9;
+            this.jumlah.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 438);
+            this.Controls.Add(this.jumlah);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
@@ -225,6 +249,8 @@ namespace data
         private System.Windows.Forms.DataGridViewTextBoxColumn ttl;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapel;
         private System.Windows.Forms.DataGridViewTextBoxColumn gaji;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label jumlah;
     }
 }
 

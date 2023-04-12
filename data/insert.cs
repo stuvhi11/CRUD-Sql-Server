@@ -24,7 +24,9 @@ namespace data
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO dataguru VALUES (@nip, @nama_guru, @ttl, @jenis_kelamin, @mapel, @gaji, @is_deleted, @created_at, @updated_at)", sqlCon);
+                String query = "INSERT INTO dataguru (nip, nama_guru, ttl, jenis_kelamin, mapel, gaji, is_deleted, created_at) VALUES (@nip, @nama_guru, @ttl, @jenis_kelamin, @mapel, @gaji, @is_deleted, @created_at)";
+
+                SqlCommand command = new SqlCommand(query, sqlCon);
 
                 command.Parameters.AddWithValue("@nip", niptext.Text);
                 command.Parameters.AddWithValue("@nama_guru", namatext.Text);
@@ -43,7 +45,8 @@ namespace data
                 command.Parameters.AddWithValue("@gaji", gajitext.Text);
                 command.Parameters.AddWithValue("@is_deleted", false);
                 command.Parameters.AddWithValue("@created_at", DateTime.Now);
-                command.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                //command.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                
 
 
 

@@ -44,6 +44,8 @@ namespace data
                 buttoncolumn.HeaderText = "Update";
                 buttoncolumn.Text = "Update";
                 buttoncolumn.UseColumnTextForButtonValue = true;
+
+               
                 Fresh();
             }
         }
@@ -72,6 +74,7 @@ namespace data
 
                 dataGridView1.AutoGenerateColumns = false;
                 dataGridView1.DataSource = dtbl;
+                Fresh();
             }
         }
 
@@ -88,11 +91,12 @@ namespace data
             {
                 if(e.ColumnIndex == 6)
                 {
-                SqlCommand command = new SqlCommand("Update dataguru set is_deleted=@is_deleted,  where id=@id", conn);
-                string query = $"UPDATE dataguru SET is_deleted = 1 WHERE id = {dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString()}";
+                    string query = "UPDATE dataguru SET is_deleted = 1  WHERE nip = @nip";
 
-                SqlCommand cmd = new SqlCommand(query, conn);
 
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nip", dataGridView1.Rows[e.RowIndex].Cells["nip"].Value.ToString());
+                    
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -121,6 +125,14 @@ namespace data
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                string query = "SELECT total FROM totall";
+                SqlCommand command = new SqlCommand(query, conn);
+                conn.Open();
+                int jml = (int)command.ExecuteScalar();
+                conn.Close();
+
+                jumlah.Text = jml.ToString();
+
                 conn.Open();
                 SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM dataguru WHERE is_deleted = 'false';", conn);
                 DataTable dtbl = new DataTable();
@@ -135,5 +147,7 @@ namespace data
         {
 
         }
+
+        
     }
 }

@@ -79,12 +79,13 @@ namespace data
                 string query = "Update dataguru set is_deleted = 0  WHERE is_deleted='true' AND NOT nip IN (SELECT nip FROM dataguru WHERE is_deleted='false');";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-
+                int jumlsmph = dataGridView1.Rows.Count;
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 int sisa = dataGridView1.Rows.Count;
-                MessageBox.Show($"{"Data gagal di pulihkan"}{sisa}");
+                int bhs = jumlsmph - sisa;
+                MessageBox.Show($"{"Data berhasil di pulihkan "}{sisa}\n{"Data gagal dipulihkan "}{bhs}");
                 fresh();
 
             }

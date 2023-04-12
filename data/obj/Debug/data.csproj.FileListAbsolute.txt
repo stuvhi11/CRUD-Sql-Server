@@ -11,3 +11,16 @@ C:\Users\LENOVO\source\repos\data\obj\Debug\data.pdb
 C:\Users\LENOVO\source\repos\data\obj\Debug\data.insert.resources
 C:\Users\LENOVO\source\repos\data\obj\Debug\data.delete.resources
 C:\Users\LENOVO\source\repos\data\obj\Debug\data.update.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\bin\Debug\data.exe.config
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\bin\Debug\data.exe
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\bin\Debug\data.pdb
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.csproj.AssemblyReference.cache
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.delete.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.Form1.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.insert.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.Properties.Resources.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.update.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.csproj.GenerateResource.cache
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.exe
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\data\obj\Debug\data.pdb
