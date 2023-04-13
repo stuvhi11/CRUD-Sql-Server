@@ -88,6 +88,7 @@ namespace cobacrud
         private void refresh_Click(object sender, EventArgs e)
         {
             fresh();
+            searchtext.Clear();
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -130,13 +131,14 @@ namespace cobacrud
 
                 if (e.ColumnIndex == 7)
                 {
-                    DataGridViewRow selectedRow = tampil.Rows[e.RowIndex];
-                    update form4 = new update(selectedRow.Cells["nip"].Value.ToString(),
-                                                           selectedRow.Cells["nama_guru"].Value.ToString(),
-                                                           selectedRow.Cells["jenis_kelamin"].Value.ToString(),
-                                                           selectedRow.Cells["ttl"].Value.ToString(),
-                                                           selectedRow.Cells["mapel"].Value.ToString(),
-                                                           selectedRow.Cells["gaji"].Value.ToString());                                                        
+                    //DataGridViewRow selectedRow = tampil.Rows[e.RowIndex];
+                    //update form4 = new update(selectedRow.Cells["nip"].Value.ToString(),
+                    //                                       selectedRow.Cells["nama_guru"].Value.ToString(),
+                    //                                       selectedRow.Cells["jenis_kelamin"].Value.ToString(),
+                    //                                       selectedRow.Cells["ttl"].Value.ToString(),
+                    //                                       selectedRow.Cells["mapel"].Value.ToString(),
+                    //                                       selectedRow.Cells["gaji"].Value.ToString());                                                        
+                    update form4 = new update();
                     form4.ShowDialog();
                     fresh();
                 }
@@ -149,6 +151,21 @@ namespace cobacrud
             insert form3 = new insert();
             form3.ShowDialog();
             fresh();
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            string searchQuery = "SELECT * FROM dataguru WHERE nip LIKE '%' + @searchText + '%' OR nama_guru LIKE '%' + @searchText + '%' OR ttl LIKE '%' + @searchText + '%' OR gaji LIKE '%' + @searchText + '%' OR mapel LIKE '%' + @searchText + '%' OR jenis_kelamin LIKE '%' + @searchText + '%'";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(searchQuery, conn);
+                cmd.Parameters.AddWithValue("@searchText", searchtext.Text);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                tampil.DataSource = table;
+            }
+
         }
     }
     }

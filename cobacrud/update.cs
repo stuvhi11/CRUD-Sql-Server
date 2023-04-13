@@ -14,26 +14,29 @@ namespace cobacrud
     public partial class update : Form
     {
             string connectionString = "Server=LAPTOP-EFP6IB7A;Initial Catalog=data;Integrated Security=True";
-        public update(string nip, string nama_guru, string jenis_kelamin, string ttl, string mapel, string gaji)
+        public update()
         {
             InitializeComponent();
-            
-                nimtext.Text = nip;
-                namatext.Text = nama_guru;
-                if (jenis_kelamin == "L")
-                {
-                    lklk.Checked = true;
 
-                }
-                else if (jenis_kelamin == "P")
-                {
-                    prm.Checked = true;
-                }
-                datetext.Text = ttl;
-                mapeltext.Text = mapel;
-                gajitext.Text = gaji;
-                
-            
+
+            //nimtext.Text = nip;
+            //namatext.Text = nama_guru;
+            //if (jenis_kelamin == "L")
+            //{
+            //    lklk.Checked = true;
+
+            //}
+            //else if (jenis_kelamin == "P")
+            //{
+            //    prm.Checked = true;
+            //}
+            //datetext.Text = ttl;
+            //mapeltext.Text = mapel;
+            //gajitext.Text = gaji;
+            //string nip, string nama_guru, string jenis_kelamin, string ttl, string mapel, string gaji
+
+
+
         }
 
 
@@ -89,6 +92,11 @@ namespace cobacrud
 
 
             }
+        }
+
+        private void update_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
