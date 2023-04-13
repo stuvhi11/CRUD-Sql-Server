@@ -1,0 +1,13 @@
+C:\Users\LENOVO\source\repos\cobacrud\bin\Debug\cobacrud.exe.config
+C:\Users\LENOVO\source\repos\cobacrud\bin\Debug\cobacrud.exe
+C:\Users\LENOVO\source\repos\cobacrud\bin\Debug\cobacrud.pdb
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.csproj.AssemblyReference.cache
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.Form1.resources
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.Properties.Resources.resources
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.csproj.GenerateResource.cache
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.exe
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.pdb
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.delete.resources
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.insert.resources
+C:\Users\LENOVO\source\repos\cobacrud\obj\Debug\cobacrud.update.resources

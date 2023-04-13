@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace data
+namespace cobacrud
 {
     public partial class insert : Form
     {
@@ -19,40 +19,63 @@ namespace data
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void insert_Load(object sender, EventArgs e)
+        {
+            
+        }
+    
+        
+
+        public void tambah()
+        {
+            
+                
+            
+        }
+
+        private void prm_CheckedChanged(object sender, EventArgs e)
         {
 
-            //string NIP = niptext.Text;
-            //string checkQuery = $"SELECT COUNT(*) FROM dataguru WHERE nip = {NIP}";
-            //string insertQuery = "INSERT INTO dataguru (nip, nama_guru, jenis_kelamin, mapel, ttl, gaji, is_deleted, created_at) VALUES (@nip, @nama_guru, @jenis_kelamin, @mapel, @ttl, @gaji, @is_deleted, @created_at)";
-                string nip = niptext.Text;
-                string CekNip = $"SELECT COUNT(*) FROM dataguru WHERE nip = '{nip}'";
+        }
+
+        private void create_Click(object sender, EventArgs e)
+        {
+            string nip = nimtext.Text;
+            string querycek = $"SELECT COUNT(*) FROM dataguru WHERE nip = '{nip}'";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
                 try
                 {
                     conn.Open();
-                    SqlCommand cek = new SqlCommand(CekNip, conn);
+                    SqlCommand cek = new SqlCommand(querycek, conn);
                     int count = (int)cek.ExecuteScalar();
                     if (count == 0)
                     {
                         SqlCommand cmd = new SqlCommand("insert into dataguru (nip, nama_guru, jenis_kelamin, ttl, mapel, gaji, is_deleted, created_at) values (@nip, @nama, @jenis_kelamin, @tanggal_lahir, @mata_pelajaran, @gaji, @is_deleted, @created_at);", conn);
-                        cmd.Parameters.AddWithValue("@nip", niptext.Text);
+                        cmd.Parameters.AddWithValue("@nip", nimtext.Text);
                         cmd.Parameters.AddWithValue("@nama", namatext.Text);
+                        if (lklk.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@jenis_kelamin", "L");
 
-                        cmd.Parameters.AddWithValue("@tanggal_lahir", ttltext.Text);
+                        }
+                        if (prm.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@jenis_kelamin", "P");
+                        }
+                        cmd.Parameters.AddWithValue("@tanggal_lahir", datetext.Text);
                         cmd.Parameters.AddWithValue("@mata_pelajaran", mapeltext.Text);
                         cmd.Parameters.AddWithValue("@gaji", gajitext.Text);
                         cmd.Parameters.AddWithValue("@is_deleted", 0);
                         cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Tambah data berhasil");
+                        MessageBox.Show("data berhasil ditambahkan");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("NIP yang dimasukkan sudah ada", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("NIP telah terdaftar", "warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     }
                 }
@@ -67,28 +90,15 @@ namespace data
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-
-            private void button1_Click(object sender, EventArgs e)
-            {
-                this.Close();
-            }
-
-            private void button3_Click(object sender, EventArgs e)
-            {
-
-            }
-
-            private void button3_Click_1(object sender, EventArgs e)
-            {
-
-            }
-
-            private void insert_Load(object sender, EventArgs e)
-            {
-
-            }
         }
 
+        private void close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
+}
 

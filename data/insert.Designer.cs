@@ -216,6 +216,7 @@ namespace data
             this.Controls.Add(this.niptext);
             this.Name = "insert";
             this.Text = "insert";
+            this.Load += new System.EventHandler(this.insert_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
