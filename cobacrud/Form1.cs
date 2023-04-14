@@ -12,10 +12,11 @@ using System.Data.SqlClient;
 
 namespace cobacrud
 {
-    public partial class Form1 : Form
+    public partial class sidebg : Form
     {
         string connectionString = "Server=LAPTOP-EFP6IB7A;Initial Catalog=data;Integrated Security=True";
-        public Form1()
+        
+            public sidebg()
         {
             InitializeComponent();
         }
@@ -43,6 +44,8 @@ namespace cobacrud
             buttoncolumn.Text = "Update";
             buttoncolumn.UseColumnTextForButtonValue = true;
 
+            
+
             tampilan();
             fresh();
         }
@@ -51,12 +54,10 @@ namespace cobacrud
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-
-                sqlCon.Open();
                 SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM dataguru WHERE is_deleted = 'false';", sqlCon);
                 DataTable dtbl = new DataTable();
                 sqlDa.Fill(dtbl);
-
+                
                 tampil.AutoGenerateColumns = false;
                 tampil.DataSource = dtbl;
 
@@ -131,13 +132,7 @@ namespace cobacrud
 
                 if (e.ColumnIndex == 7)
                 {
-                    //DataGridViewRow selectedRow = tampil.Rows[e.RowIndex];
-                    //update form4 = new update(selectedRow.Cells["nip"].Value.ToString(),
-                    //                                       selectedRow.Cells["nama_guru"].Value.ToString(),
-                    //                                       selectedRow.Cells["jenis_kelamin"].Value.ToString(),
-                    //                                       selectedRow.Cells["ttl"].Value.ToString(),
-                    //                                       selectedRow.Cells["mapel"].Value.ToString(),
-                    //                                       selectedRow.Cells["gaji"].Value.ToString());                                                        
+                                                                           
                     update form4 = new update();
                     form4.ShowDialog();
                     fresh();
@@ -164,11 +159,40 @@ namespace cobacrud
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 tampil.DataSource = table;
+                int rowCount = tampil.RowCount;
+                jumlah.Text = rowCount.ToString();
             }
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void restorepnl_Paint(object sender, PaintEventArgs e)
+        {
+            delete form2 = new delete();
+            form2.ShowDialog();
+            fresh();
+        }
+
+        private void side_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
-    }
+}
 
 
 

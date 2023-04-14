@@ -29,6 +29,7 @@ namespace cobacrud
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(insert));
             this.nimtext = new System.Windows.Forms.TextBox();
             this.namatext = new System.Windows.Forms.TextBox();
             this.gajitext = new System.Windows.Forms.TextBox();
@@ -45,12 +46,14 @@ namespace cobacrud
             this.create = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // nimtext
             // 
             this.nimtext.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nimtext.Location = new System.Drawing.Point(247, 67);
+            this.nimtext.Location = new System.Drawing.Point(246, 88);
             this.nimtext.Name = "nimtext";
             this.nimtext.Size = new System.Drawing.Size(275, 26);
             this.nimtext.TabIndex = 0;
@@ -58,7 +61,7 @@ namespace cobacrud
             // namatext
             // 
             this.namatext.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namatext.Location = new System.Drawing.Point(247, 112);
+            this.namatext.Location = new System.Drawing.Point(246, 133);
             this.namatext.Name = "namatext";
             this.namatext.Size = new System.Drawing.Size(275, 26);
             this.namatext.TabIndex = 1;
@@ -66,7 +69,7 @@ namespace cobacrud
             // gajitext
             // 
             this.gajitext.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gajitext.Location = new System.Drawing.Point(246, 305);
+            this.gajitext.Location = new System.Drawing.Point(245, 326);
             this.gajitext.Name = "gajitext";
             this.gajitext.Size = new System.Drawing.Size(275, 26);
             this.gajitext.TabIndex = 2;
@@ -74,7 +77,7 @@ namespace cobacrud
             // mapeltext
             // 
             this.mapeltext.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mapeltext.Location = new System.Drawing.Point(246, 259);
+            this.mapeltext.Location = new System.Drawing.Point(245, 280);
             this.mapeltext.Name = "mapeltext";
             this.mapeltext.Size = new System.Drawing.Size(275, 26);
             this.mapeltext.TabIndex = 3;
@@ -84,7 +87,7 @@ namespace cobacrud
             this.datetext.CustomFormat = "yyyy-MM-dd";
             this.datetext.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datetext.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetext.Location = new System.Drawing.Point(247, 217);
+            this.datetext.Location = new System.Drawing.Point(246, 238);
             this.datetext.Name = "datetext";
             this.datetext.Size = new System.Drawing.Size(111, 26);
             this.datetext.TabIndex = 4;
@@ -93,7 +96,7 @@ namespace cobacrud
             // 
             this.lklk.AutoSize = true;
             this.lklk.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lklk.Location = new System.Drawing.Point(246, 162);
+            this.lklk.Location = new System.Drawing.Point(245, 183);
             this.lklk.Name = "lklk";
             this.lklk.Size = new System.Drawing.Size(36, 22);
             this.lklk.TabIndex = 5;
@@ -105,7 +108,7 @@ namespace cobacrud
             // 
             this.prm.AutoSize = true;
             this.prm.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prm.Location = new System.Drawing.Point(361, 162);
+            this.prm.Location = new System.Drawing.Point(360, 183);
             this.prm.Name = "prm";
             this.prm.Size = new System.Drawing.Size(36, 22);
             this.prm.TabIndex = 6;
@@ -118,7 +121,7 @@ namespace cobacrud
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 70);
+            this.label1.Location = new System.Drawing.Point(39, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 18);
             this.label1.TabIndex = 7;
@@ -129,7 +132,7 @@ namespace cobacrud
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 115);
+            this.label2.Location = new System.Drawing.Point(39, 136);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 18);
             this.label2.TabIndex = 8;
@@ -139,7 +142,7 @@ namespace cobacrud
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 164);
+            this.label3.Location = new System.Drawing.Point(39, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 18);
             this.label3.TabIndex = 9;
@@ -149,7 +152,7 @@ namespace cobacrud
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(40, 223);
+            this.label4.Location = new System.Drawing.Point(39, 244);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 18);
             this.label4.TabIndex = 10;
@@ -159,7 +162,7 @@ namespace cobacrud
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(40, 267);
+            this.label5.Location = new System.Drawing.Point(39, 288);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 18);
             this.label5.TabIndex = 11;
@@ -169,7 +172,7 @@ namespace cobacrud
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(40, 308);
+            this.label6.Location = new System.Drawing.Point(39, 329);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 18);
             this.label6.TabIndex = 12;
@@ -178,9 +181,9 @@ namespace cobacrud
             // create
             // 
             this.create.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.create.Location = new System.Drawing.Point(346, 374);
+            this.create.Location = new System.Drawing.Point(335, 371);
             this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(75, 23);
+            this.create.Size = new System.Drawing.Size(93, 23);
             this.create.TabIndex = 13;
             this.create.Text = "INSERT";
             this.create.UseVisualStyleBackColor = true;
@@ -189,9 +192,9 @@ namespace cobacrud
             // close
             // 
             this.close.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.close.Location = new System.Drawing.Point(445, 374);
+            this.close.Location = new System.Drawing.Point(434, 371);
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(75, 23);
+            this.close.Size = new System.Drawing.Size(86, 23);
             this.close.TabIndex = 14;
             this.close.Text = "CLOSE";
             this.close.UseVisualStyleBackColor = true;
@@ -200,18 +203,28 @@ namespace cobacrud
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(244, 22);
+            this.label7.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(80, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 18);
+            this.label7.Size = new System.Drawing.Size(202, 55);
             this.label7.TabIndex = 15;
             this.label7.Text = "INSERT";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(42, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 33);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
             // 
             // insert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 413);
+            this.ClientSize = new System.Drawing.Size(561, 417);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.close);
             this.Controls.Add(this.create);
@@ -231,6 +244,7 @@ namespace cobacrud
             this.Name = "insert";
             this.Text = "insert";
             this.Load += new System.EventHandler(this.insert_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +268,6 @@ namespace cobacrud
         private System.Windows.Forms.Button create;
         private System.Windows.Forms.Button close;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
