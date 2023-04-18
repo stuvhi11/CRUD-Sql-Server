@@ -29,7 +29,7 @@ namespace cobacrud
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sidebg));
             this.label1 = new System.Windows.Forms.Label();
             this.tampil = new System.Windows.Forms.DataGridView();
@@ -46,25 +46,24 @@ namespace cobacrud
             this.label3 = new System.Windows.Forms.Label();
             this.searchtext = new System.Windows.Forms.TextBox();
             this.search = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.side = new System.Windows.Forms.Panel();
-            this.topbg = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.topbg = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tampil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.side.SuspendLayout();
-            this.topbg.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.topbg.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -81,14 +80,14 @@ namespace cobacrud
             // 
             this.tampil.AllowUserToAddRows = false;
             this.tampil.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tampil.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tampil.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tampil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tampil.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nip,
@@ -103,7 +102,6 @@ namespace cobacrud
             this.tampil.RowHeadersVisible = false;
             this.tampil.Size = new System.Drawing.Size(759, 265);
             this.tampil.TabIndex = 1;
-            this.tampil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tampil_CellContentClick);
             // 
             // nip
             // 
@@ -208,7 +206,7 @@ namespace cobacrud
             // 
             this.jumlah.AutoSize = true;
             this.jumlah.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jumlah.Location = new System.Drawing.Point(359, 92);
+            this.jumlah.Location = new System.Drawing.Point(418, 97);
             this.jumlah.Name = "jumlah";
             this.jumlah.Size = new System.Drawing.Size(18, 17);
             this.jumlah.TabIndex = 6;
@@ -218,11 +216,11 @@ namespace cobacrud
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(237, 92);
+            this.label3.Location = new System.Drawing.Point(237, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 17);
+            this.label3.Size = new System.Drawing.Size(175, 17);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Jumlah data : ";
+            this.label3.Text = "Jumlah seluruh data : ";
             // 
             // searchtext
             // 
@@ -244,35 +242,6 @@ namespace cobacrud
             this.search.TabIndex = 9;
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.search_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(867, 520);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(39, 21);
-            this.comboBox1.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(912, 520);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 17);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "/";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(934, 520);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "0";
             // 
             // pictureBox1
             // 
@@ -305,17 +274,6 @@ namespace cobacrud
             this.side.TabIndex = 13;
             this.side.Paint += new System.Windows.Forms.PaintEventHandler(this.side_Paint);
             // 
-            // topbg
-            // 
-            this.topbg.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.topbg.Controls.Add(this.search);
-            this.topbg.Controls.Add(this.refresh);
-            this.topbg.Controls.Add(this.searchtext);
-            this.topbg.Location = new System.Drawing.Point(240, 137);
-            this.topbg.Name = "topbg";
-            this.topbg.Size = new System.Drawing.Size(759, 58);
-            this.topbg.TabIndex = 14;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label5);
@@ -324,6 +282,16 @@ namespace cobacrud
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 67);
             this.panel1.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(66, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Userr 1234";
             // 
             // pictureBox2
             // 
@@ -335,15 +303,16 @@ namespace cobacrud
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
-            // label5
+            // topbg
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(66, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 17);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Userr 1234";
+            this.topbg.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.topbg.Controls.Add(this.search);
+            this.topbg.Controls.Add(this.refresh);
+            this.topbg.Controls.Add(this.searchtext);
+            this.topbg.Location = new System.Drawing.Point(240, 137);
+            this.topbg.Name = "topbg";
+            this.topbg.Size = new System.Drawing.Size(759, 58);
+            this.topbg.TabIndex = 14;
             // 
             // button1
             // 
@@ -357,31 +326,50 @@ namespace cobacrud
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label6
+            // comboBox1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(833, 520);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 17);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "0";
+            this.comboBox1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(898, 512);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(40, 26);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(944, 512);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 22);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "/ ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(971, 512);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 22);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "0";
             // 
             // sidebg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 555);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.topbg);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.side);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.jumlah);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.tampil);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "sidebg";
@@ -391,11 +379,11 @@ namespace cobacrud
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.side.ResumeLayout(false);
-            this.topbg.ResumeLayout(false);
-            this.topbg.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.topbg.ResumeLayout(false);
+            this.topbg.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,9 +406,6 @@ namespace cobacrud
         private System.Windows.Forms.DataGridViewTextBoxColumn gaji;
         private System.Windows.Forms.TextBox searchtext;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel side;
@@ -429,7 +414,9 @@ namespace cobacrud
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }
 

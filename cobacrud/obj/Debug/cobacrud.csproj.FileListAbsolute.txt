@@ -24,3 +24,8 @@ C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\obj\Debug\cobacrud.csproj.
 C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\obj\Debug\cobacrud.exe
 C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\obj\Debug\cobacrud.pdb
 C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\obj\Debug\cobacrud.sidebg.resources
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\bin\Debug\System.Windows.Forms.dll
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\bin\Debug\VPaged.WF.dll
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\obj\Debug\cobacrud.csproj.CopyComplete
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\bin\Debug\PagedList.dll
+C:\Users\LENOVO\source\repos\CRUD-Sql-Server\cobacrud\bin\Debug\PagedList.xml

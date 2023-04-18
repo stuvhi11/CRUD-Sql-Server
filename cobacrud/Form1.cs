@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using VPaged.WF;
 
 
 namespace cobacrud
@@ -15,10 +16,15 @@ namespace cobacrud
     public partial class sidebg : Form
     {
         string connectionString = "Server=LAPTOP-EFP6IB7A;Initial Catalog=data;Integrated Security=True";
-        
-            public sidebg()
+        int itemsPerPage = 5;
+        int currentPage = 1;
+
+
+        public sidebg()
         {
             InitializeComponent();
+            //start = 0;
+
         }
 
         private void restore_Click(object sender, EventArgs e)
@@ -30,6 +36,19 @@ namespace cobacrud
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                //SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM dataguru WHERE is_deleted = 'false';", conn);
+                //DataSet ds = new DataSet();
+
+                //sqlDa.Fill(ds, start, 5, "dataguru");
+
+                //tampil.DataSource = ds.Tables[0];
+
+                //back.Enabled = false;
+
+            }
             DataGridViewButtonColumn buttoncolum = new DataGridViewButtonColumn();
             tampil.Columns.Insert(6, buttoncolum);
             //buttoncolum.Width = 77;
@@ -45,10 +64,26 @@ namespace cobacrud
             buttoncolumn.UseColumnTextForButtonValue = true;
 
             
+                // Mengambil data pada halaman pertama dan menampilkannya pada DataGridView
+                DataTable dt = GetData(currentPage);
+                tampil.DataSource = dt;
 
-            tampilan();
-            fresh();
+                // Menghitung jumlah halaman total dan mengisikan ComboBox dengan nomor halaman
+                int totalPages = CalculateTotalPages();
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    comboBox1.Items.Add(i);
+                }
+                comboBox1.SelectedIndex = currentPage - 1;
+            
+
+            //ngitung();
+            //tampilan();
+        //fresh();
         }
+
+
+
 
         public void tampilan()
         {
@@ -57,7 +92,7 @@ namespace cobacrud
                 SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM dataguru WHERE is_deleted = 'false';", sqlCon);
                 DataTable dtbl = new DataTable();
                 sqlDa.Fill(dtbl);
-                
+
                 tampil.AutoGenerateColumns = false;
                 tampil.DataSource = dtbl;
 
@@ -68,6 +103,7 @@ namespace cobacrud
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+
                 string query = "SELECT total FROM totall";
                 SqlCommand command = new SqlCommand(query, conn);
                 conn.Open();
@@ -84,6 +120,7 @@ namespace cobacrud
                 tampil.AutoGenerateColumns = false;
                 tampil.DataSource = dtbl;
             }
+
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -111,7 +148,7 @@ namespace cobacrud
 
         private void tampil_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //string query = "UPDATE dataguru SET is_Deleted = @isDeleted, is_deleted_at = @deletedAt WHERE id = @id";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 if (e.ColumnIndex == 6)
@@ -132,7 +169,7 @@ namespace cobacrud
 
                 if (e.ColumnIndex == 7)
                 {
-                                                                           
+
                     update form4 = new update();
                     form4.ShowDialog();
                     fresh();
@@ -145,7 +182,7 @@ namespace cobacrud
         {
             insert form3 = new insert();
             form3.ShowDialog();
-            fresh();
+            //fresh();
         }
 
         private void search_Click(object sender, EventArgs e)
@@ -191,8 +228,71 @@ namespace cobacrud
         {
             this.Close();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentPage = comboBox1.SelectedIndex + 1;
+            DataTable dt = GetData(currentPage);
+            tampil.DataSource = dt;
+        }
+
+        
+
+        private DataTable GetData(int page)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query2 = "SELECT total FROM totall";
+                SqlCommand command = new SqlCommand(query2, conn);
+                conn.Open();
+                int jml = (int)command.ExecuteScalar();
+                conn.Close();
+
+                jumlah.Text = jml.ToString();
+
+                // Menghitung indeks awal dan akhir dari data pada halaman yang ditentukan
+                int startIndex = (page - 1) * itemsPerPage;
+                int endIndex = startIndex + itemsPerPage - 1;
+
+                // Membuat query untuk mengambil data pada halaman yang ditentukan
+                string query = $"SELECT * FROM dataguru ORDER BY id OFFSET {startIndex} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY";
+
+                // Mengeksekusi query dan mengambil hasilnya
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                tampil.AutoGenerateColumns = false;
+                tampil.DataSource = dt;
+
+                return dt;
+            }
+        }
+
+        private int CalculateTotalPages()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                conn.Open();
+                // Menghitung jumlah total data
+                string countQuery = "SELECT COUNT(*) FROM dataguru";
+                SqlCommand countCmd = new SqlCommand(countQuery, conn);
+                int totalItems = (int)countCmd.ExecuteScalar();
+                jumlah.Text = totalItems.ToString();
+
+                // Menghitung jumlah halaman total
+                int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+                label4.Text = totalPages.ToString();
+
+
+                return totalPages;
+                conn.Close();
+            }
+        }
+
     }
 }
+
 
 
 
