@@ -227,7 +227,6 @@ namespace cobacrud
             this.Controls.Add(this.nimtext);
             this.Name = "update";
             this.Text = "update";
-            this.Load += new System.EventHandler(this.update_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

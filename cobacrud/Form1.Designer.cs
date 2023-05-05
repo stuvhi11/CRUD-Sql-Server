@@ -33,12 +33,6 @@ namespace cobacrud
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sidebg));
             this.label1 = new System.Windows.Forms.Label();
             this.tampil = new System.Windows.Forms.DataGridView();
-            this.nip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_guru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jenis_kelamin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mapel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gaji = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refresh = new System.Windows.Forms.Button();
             this.create = new System.Windows.Forms.Button();
             this.restore = new System.Windows.Forms.Button();
@@ -57,6 +51,14 @@ namespace cobacrud
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.nip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_guru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jenis_kelamin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mapel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gaji = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonHapus = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.buttonUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tampil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -95,67 +97,16 @@ namespace cobacrud
             this.jenis_kelamin,
             this.ttl,
             this.mapel,
-            this.gaji});
+            this.gaji,
+            this.buttonHapus,
+            this.buttonUpdate});
             this.tampil.Location = new System.Drawing.Point(240, 211);
             this.tampil.Name = "tampil";
             this.tampil.ReadOnly = true;
             this.tampil.RowHeadersVisible = false;
             this.tampil.Size = new System.Drawing.Size(759, 265);
             this.tampil.TabIndex = 1;
-            // 
-            // nip
-            // 
-            this.nip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nip.DataPropertyName = "nip";
-            this.nip.HeaderText = "NIP";
-            this.nip.Name = "nip";
-            this.nip.ReadOnly = true;
-            this.nip.Width = 56;
-            // 
-            // nama_guru
-            // 
-            this.nama_guru.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nama_guru.DataPropertyName = "nama_guru";
-            this.nama_guru.HeaderText = "Nama guru";
-            this.nama_guru.Name = "nama_guru";
-            this.nama_guru.ReadOnly = true;
-            this.nama_guru.Width = 107;
-            // 
-            // jenis_kelamin
-            // 
-            this.jenis_kelamin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.jenis_kelamin.DataPropertyName = "jenis_kelamin";
-            this.jenis_kelamin.HeaderText = "Jenis kelamin";
-            this.jenis_kelamin.Name = "jenis_kelamin";
-            this.jenis_kelamin.ReadOnly = true;
-            this.jenis_kelamin.Width = 123;
-            // 
-            // ttl
-            // 
-            this.ttl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ttl.DataPropertyName = "ttl";
-            this.ttl.HeaderText = "Tanggal lahir";
-            this.ttl.Name = "ttl";
-            this.ttl.ReadOnly = true;
-            this.ttl.Width = 123;
-            // 
-            // mapel
-            // 
-            this.mapel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.mapel.DataPropertyName = "mapel";
-            this.mapel.HeaderText = "Mapel";
-            this.mapel.Name = "mapel";
-            this.mapel.ReadOnly = true;
-            this.mapel.Width = 79;
-            // 
-            // gaji
-            // 
-            this.gaji.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gaji.DataPropertyName = "gaji";
-            this.gaji.HeaderText = "Gaji";
-            this.gaji.Name = "gaji";
-            this.gaji.ReadOnly = true;
-            this.gaji.Width = 62;
+            this.tampil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tampil_CellContentClick_1);
             // 
             // refresh
             // 
@@ -355,6 +306,77 @@ namespace cobacrud
             this.label4.Size = new System.Drawing.Size(22, 22);
             this.label4.TabIndex = 20;
             this.label4.Text = "0";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // nip
+            // 
+            this.nip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nip.DataPropertyName = "nip";
+            this.nip.HeaderText = "NIP";
+            this.nip.Name = "nip";
+            this.nip.ReadOnly = true;
+            this.nip.Width = 56;
+            // 
+            // nama_guru
+            // 
+            this.nama_guru.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nama_guru.DataPropertyName = "nama_guru";
+            this.nama_guru.HeaderText = "Nama guru";
+            this.nama_guru.Name = "nama_guru";
+            this.nama_guru.ReadOnly = true;
+            this.nama_guru.Width = 117;
+            // 
+            // jenis_kelamin
+            // 
+            this.jenis_kelamin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.jenis_kelamin.DataPropertyName = "jenis_kelamin";
+            this.jenis_kelamin.HeaderText = "Jenis kelamin";
+            this.jenis_kelamin.Name = "jenis_kelamin";
+            this.jenis_kelamin.ReadOnly = true;
+            this.jenis_kelamin.Width = 123;
+            // 
+            // ttl
+            // 
+            this.ttl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ttl.DataPropertyName = "ttl";
+            this.ttl.HeaderText = "Tanggal lahir";
+            this.ttl.Name = "ttl";
+            this.ttl.ReadOnly = true;
+            this.ttl.Width = 123;
+            // 
+            // mapel
+            // 
+            this.mapel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.mapel.DataPropertyName = "mapel";
+            this.mapel.HeaderText = "Mapel";
+            this.mapel.Name = "mapel";
+            this.mapel.ReadOnly = true;
+            this.mapel.Width = 79;
+            // 
+            // gaji
+            // 
+            this.gaji.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gaji.DataPropertyName = "gaji";
+            this.gaji.HeaderText = "Gaji";
+            this.gaji.Name = "gaji";
+            this.gaji.ReadOnly = true;
+            this.gaji.Width = 62;
+            // 
+            // buttonHapus
+            // 
+            this.buttonHapus.HeaderText = "Delete";
+            this.buttonHapus.Name = "buttonHapus";
+            this.buttonHapus.ReadOnly = true;
+            this.buttonHapus.Text = "Delete";
+            this.buttonHapus.UseColumnTextForButtonValue = true;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.HeaderText = "Update";
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.ReadOnly = true;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseColumnTextForButtonValue = true;
             // 
             // sidebg
             // 
@@ -398,12 +420,6 @@ namespace cobacrud
         private System.Windows.Forms.Button restore;
         private System.Windows.Forms.Label jumlah;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nama_guru;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jenis_kelamin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ttl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mapel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gaji;
         private System.Windows.Forms.TextBox searchtext;
         private System.Windows.Forms.Button search;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -417,6 +433,14 @@ namespace cobacrud
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_guru;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jenis_kelamin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ttl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mapel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gaji;
+        private System.Windows.Forms.DataGridViewButtonColumn buttonHapus;
+        private System.Windows.Forms.DataGridViewButtonColumn buttonUpdate;
     }
 }
 

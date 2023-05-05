@@ -11,121 +11,124 @@ using System.Data.SqlClient;
 using VPaged.WF;
 
 
+    
 namespace cobacrud
 {
     public partial class sidebg : Form
     {
-        string connectionString = "Server=LAPTOP-EFP6IB7A;Initial Catalog=data;Integrated Security=True";
-        int itemsPerPage = 5;
-        int currentPage = 1;
+        SqlConnection conn = new SqlConnection ("Server=LAPTOP-EFP6IB7A;Initial Catalog=data;Integrated Security=True");
+        String connectionString = "Server=LAPTOP-EFP6IB7A;Initial Catalog=data;Integrated Security=True";
+        int dataPagi = 8;
         
 
 
         public sidebg()
         {
             InitializeComponent();
-            //start = 0;
+            
             
 
         }
-
-        private void restore_Click(object sender, EventArgs e)
-        {
-            delete form2 = new delete();
-            form2.ShowDialog();
-            fresh();
-        }
-
+                
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
+            showPagi(1);
+            indexPagi();
+        }    
 
-                //SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM dataguru WHERE is_deleted = 'false';", conn);
-                //DataSet ds = new DataSet();
+        private void show()
+        {
+            string query = "EXEC show";
 
-                //sqlDa.Fill(ds, start, 5, "dataguru");
+            SqlCommand cmd = new SqlCommand(query, conn);
 
-                //tampil.DataSource = ds.Tables[0];
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
 
-                //back.Enabled = false;
+            DataTable table = new DataTable();
+            table.Load(reader);
 
-            }
-            DataGridViewButtonColumn buttoncolum = new DataGridViewButtonColumn();
-            tampil.Columns.Insert(6, buttoncolum);
-            //buttoncolum.Width = 77;
-            buttoncolum.HeaderText = "Delete";
-            buttoncolum.Text = "Delete";
-            buttoncolum.UseColumnTextForButtonValue = true;
+            tampil.AutoGenerateColumns = false;
+            tampil.DataSource = table;
 
+            conn.Close();
 
-            DataGridViewButtonColumn buttoncolumn = new DataGridViewButtonColumn();
-            tampil.Columns.Insert(7, buttoncolumn);
-            buttoncolumn.HeaderText = "Update";
-            buttoncolumn.Text = "Update";
-            buttoncolumn.UseColumnTextForButtonValue = true;
-
-            
-                DataTable dt = GetData(currentPage);
-                tampil.DataSource = dt;
-
-                int totalPages = CalculateTotalPages();
-                for (int i = 1; i <= totalPages; i++)
-                {
-                    comboBox1.Items.Add(i);
-                }
-                comboBox1.SelectedIndex = currentPage - 1;
-            
-
-            //ngitung();
-            //tampilan();
-        //fresh();
         }
 
-
-
-
-        public void tampilan()
+        private void allData()
         {
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                
-                DataTable dt = GetData(currentPage);
+            conn.Open();
+            string query = "SELECT total FROM totall";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read()) jumlah.Text = dr["total"].ToString();
+            conn.Close();
 
-                tampil.AutoGenerateColumns = false;
-                tampil.DataSource = dt;
-                
-
-            }
         }
 
-        public void fresh()
+        private void showPagi(int page= 1)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            int pages = (page - 1) * dataPagi;
+
+            string query = $"SELECT * FROM dataguru WHERE is_deleted = 0 ORDER BY updated_at DESC OFFSET {pages} ROWS FETCH NEXT {dataPagi} ROWS ONLY;";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            DataTable table = new DataTable();
+            table.Load(reader);
+
+            tampil.AutoGenerateColumns = false;
+            tampil.DataSource = table;
+
+            conn.Close();
+
+            allData();
+
+        }
+
+        private void indexPagi()
+        {
+            comboBox1.Text = "1";
+
+            int jumlahGuru = 0;
+            string query = "SELECT total FROM totall";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read()) jumlahGuru = Convert.ToInt32(reader["total"]);
+            reader.Close();
+            conn.Close();
+
+            double totalPages = Math.Ceiling(Convert.ToDouble(jumlahGuru) / Convert.ToDouble(dataPagi));
+
+            comboBox1.Items.Clear();
+            for (int i = 1; i <= totalPages; i++)
             {
-
-                string query = "SELECT total FROM totall";
-                SqlCommand command = new SqlCommand(query, conn);
-                conn.Open();
-                int jml = (int)command.ExecuteScalar();
-                conn.Close();
-
-                jumlah.Text = jml.ToString();
-
-                conn.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT * FROM dataguru WHERE is_deleted = 'false';", conn);
-                DataTable dt = GetData(currentPage);
-
-                tampil.AutoGenerateColumns = false;
-                tampil.DataSource = dt;
+                comboBox1.Items.Add(i);
             }
 
+            label4.Text = totalPages.ToString();
+
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showPagi(Convert.ToInt32(comboBox1.SelectedItem));
+        }
+              
+                
+        private void tampil_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
         }
 
         private void refresh_Click(object sender, EventArgs e)
         {
-            fresh();
             searchtext.Clear();
+            showPagi(1);
+            indexPagi();
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -133,55 +136,14 @@ namespace cobacrud
             this.Close();
         }
 
-        public void deleteData(String ID)
-        {
-            String query = "UPDATE dataguru SET is_deleted = 1, updated_at = GETDATE()  WHERE id = @id";
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@id", ID);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        private void tampil_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                if (e.ColumnIndex == 6)
-                {
-                    string query = "UPDATE dataguru SET is_deleted = 1, is_deleted_at=@deletedAt  WHERE nip = @nip";
-
-
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@nip", tampil.Rows[e.RowIndex].Cells["nip"].Value.ToString());
-                    cmd.Parameters.AddWithValue("@deletedAt", DateTime.Now);
-
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    //fresh();
-                }
-
-
-                if (e.ColumnIndex == 7)
-                {
-
-                    update form4 = new update();
-                    form4.ShowDialog();
-                    fresh();
-                }
-
-            }
-        }
-
         private void create_Click(object sender, EventArgs e)
         {
             insert form3 = new insert();
             form3.ShowDialog();
-            fresh();
+            comboBox1.Items.Clear();
+            showPagi();
+            indexPagi();
+            
         }
 
         private void search_Click(object sender, EventArgs e)
@@ -191,13 +153,31 @@ namespace cobacrud
             {
                 SqlCommand cmd = new SqlCommand(searchQuery, conn);
                 cmd.Parameters.AddWithValue("@searchText", searchtext.Text);
+                
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
+                
                 tampil.DataSource = table;
                 int rowCount = tampil.RowCount;
                 jumlah.Text = rowCount.ToString();
             }
+
+        }
+
+        private void restore_Click(object sender, EventArgs e)
+        {
+            delete form2 = new delete();
+            form2.ShowDialog();
+            indexPagi();
+            showPagi(1);
+            
+        }
+
+        private void restorepnl_Paint(object sender, PaintEventArgs e)
+        {
+            delete form2 = new delete();
+            form2.ShowDialog();
 
         }
 
@@ -210,14 +190,7 @@ namespace cobacrud
         {
 
         }
-
-        private void restorepnl_Paint(object sender, PaintEventArgs e)
-        {
-            delete form2 = new delete();
-            form2.ShowDialog();
-            fresh();
-        }
-
+                
         private void side_Paint(object sender, PaintEventArgs e)
         {
 
@@ -227,67 +200,43 @@ namespace cobacrud
         {
             this.Close();
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+                              
+        private void tampil_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            currentPage = comboBox1.SelectedIndex + 1;
-            DataTable dt = GetData(currentPage);
-            tampil.DataSource = dt;
-        }
-
-         
-        private DataTable GetData(int page)
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            //if (tampil.Columns[e.ColumnIndex].Name == "buttonHapus")
+            if (e.ColumnIndex == 6)
             {
-                string query2 = "SELECT total FROM totall";
-                SqlCommand command = new SqlCommand(query2, conn);
-                conn.Open();
-                int jml = (int)command.ExecuteScalar();
-                conn.Close();
+                string query = "UPDATE dataguru SET is_deleted = 1, is_deleted_at = GETDATE()  WHERE nip = @nip";
 
-                jumlah.Text = jml.ToString();
-
-                int startIndex = (page - 1) * itemsPerPage;
-                int endIndex = startIndex + itemsPerPage - 1;
-
-                string query = $"SELECT * FROM dataguru WHERE is_deleted = 0 ORDER BY id OFFSET {startIndex} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY";
-
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                tampil.AutoGenerateColumns = false;
-                tampil.DataSource = dt;
-
-                return dt;
-            }
-        }
-
-        private int CalculateTotalPages()
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@nip", tampil.Rows[e.RowIndex].Cells["nip"].Value.ToString());
 
                 conn.Open();
-                
-                string Query = "SELECT COUNT(*) FROM dataguru";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                int totalItems = (int)cmd.ExecuteScalar();
-                jumlah.Text = totalItems.ToString();
-
-                
-                int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
-                label4.Text = totalPages.ToString();
-
-
-                return totalPages;
+                cmd.ExecuteNonQuery();
                 conn.Close();
+                allData();
+                showPagi(1);
+                indexPagi();
+            } else if (e.ColumnIndex == 7)
+            {
+                update form2 = new update();
+                form2.ShowDialog();
+                indexPagi();
+                showPagi(1);
             }
+                
+                   
+
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
 
 
 
+        
